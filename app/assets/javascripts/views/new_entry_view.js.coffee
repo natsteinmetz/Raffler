@@ -3,6 +3,12 @@ Raffler.NewEntryView = Ember.View.extend
   tagName: 'form'
 
   submit: ->
-    @get('controller').send('addEntry', @get('newEntryName'))
-    @set('newEntryName', "")
-    false
+    # check that the name is included
+    console.log @get('newEntryName')
+    if @get('newEntryName') == ''
+      alert 'missing name!'
+      false
+    else
+      @get('controller').send('addEntry', @get('newEntryName'))
+      @set('newEntryName', "")
+      false
